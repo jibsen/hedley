@@ -31,7 +31,7 @@
 #if defined(HEDLEY_ENCODE_VERSION)
 #  undef HEDLEY_ENCODE_VERSION
 #endif
-#define HEDLEY_ENCODE_VERSION(major,minor,revision) (((major & 0xff) << 16) | ((minor & 0xff) << 8) | (revision & 0xff))
+#define HEDLEY_ENCODE_VERSION(major,minor,revision) ((((major) & 0xff) << 16) | (((minor) & 0xff) << 8) | ((revision) & 0xff))
 
 #if defined(HEDLEY_GCC_VERSION_CHECK)
 #  undef HEDLEY_GCC_VERSION_CHECK
@@ -61,11 +61,11 @@
 #if !defined(_MSC_VER)
 #  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) 0
 #elif defined(_MSC_VER) && (_MSC_VER >= 1400)
-#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_FULL_VER >= ((major * 1000000) + (minor * 10000) + (patch)))
+#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_FULL_VER >= (((major) * 1000000) + ((minor) * 10000) + (patch)))
 #elif defined(_MSC_VER) && (_MSC_VER >= 1200)
-#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_FULL_VER >= ((major * 100000) + (minor * 1000) + (patch)))
+#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_FULL_VER >= (((major) * 100000) + ((minor) * 1000) + (patch)))
 #else
-#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_VER >= ((major * 100) + (minor)))
+#  define HEDLEY_MSVC_VERSION_CHECK(major,minor,patch) (_MSC_VER >= (((major) * 100) + (minor)))
 #endif
 
 #if defined(HEDLEY_CLANG_HAS_ATTRIBUTE)
